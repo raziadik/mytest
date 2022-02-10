@@ -1,0 +1,11 @@
+/.env
+/node_modules/
+/vendor/
+/public/.htaccess
+/.htaccess
+/storage/framework/cache/data/
+/storage/framework/sessions/
+/storage/framework/views/
+/storage/logs/
+/storage/debugbar/
+/storage/app/
