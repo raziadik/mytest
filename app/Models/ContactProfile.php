@@ -18,5 +18,7 @@ class ContactProfile extends Model
         'text',
         'slug',
         'order_button',
+        'background_color',
+        'color',
     ];
 }

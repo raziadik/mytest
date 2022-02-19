@@ -42,6 +42,13 @@
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
     ),
   ),
+  'laravel/legacy-factories' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Illuminate\\Database\\Eloquent\\LegacyFactoryServiceProvider',
+    ),
+  ),
   'laravel/sail' => 
   array (
     'providers' => 
@@ -77,6 +84,17 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'qoraiche/laravel-mail-editor' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Qoraiche\\MailEclipse\\MailEclipseServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'MailEclipse' => 'Qoraiche\\MailEclipse\\Facades\\MailEclipse',
+    ),
+  ),
   'simplesoftwareio/simple-qrcode' => 
   array (
     'providers' => 
@@ -86,6 +104,13 @@
     'aliases' => 
     array (
       'QrCode' => 'SimpleSoftwareIO\\QrCode\\Facades\\QrCode',
+    ),
+  ),
+  'spatie/laravel-permission' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
   'yajra/laravel-datatables-oracle' => 

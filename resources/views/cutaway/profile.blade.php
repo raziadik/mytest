@@ -209,7 +209,7 @@
                         formData.append('avatar', blob, 'avatar.jpg');
                         formData.append('_token', '{{ csrf_token() }}');
 
-                        $.ajax('https://my.addme.plus/profile/uploadAvatar/{{ $profile->id }}', {
+                        $.ajax('/profile/uploadAvatar/{{ $profile->id }}', {
                             method: 'POST',
                             data: formData,
                             processData: false,

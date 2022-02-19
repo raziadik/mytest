@@ -22,6 +22,7 @@ window.Vue = require('vue').default;
 //Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('contact-buttons', require('./components/ContactButtons.vue').default);
 Vue.component('add-button', require('./components/AddButton.vue').default);
+Vue.component('color-piker', require('./components/ColorPiker.vue').default);
 
 
 

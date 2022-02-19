@@ -16,7 +16,7 @@
 
                     </div>
                     <div class="modal-body">
-                        <p><input type="text" v-model="company" /></p>
+                        <p><input type="text" /></p>
                         <ul class="cutaway-buttons-list">
                             <li v-for="element in contacts">
                                 <a @click="addButton(element.id, $event)" :style="{color: element.color, backgroundColor: element.background_color}" target="_blank" href="#" class="contact-button">

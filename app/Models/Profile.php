@@ -45,6 +45,6 @@ class Profile extends Model
     }
 
     public function contacts() {
-        return $this->belongsToMany(Contact::class)->withPivot('link', 'text', 'order_button', 'slug')->orderBy('contact_profile.order_button');
+        return $this->belongsToMany(Contact::class)->withPivot('link', 'text', 'color', 'background_color', 'order_button', 'slug')->orderBy('contact_profile.order_button');
     }
 }

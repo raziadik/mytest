@@ -15343,6 +15343,311 @@
      
 }
 
+    namespace SimpleSoftwareIO\QrCode\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class QrCode {
+                    /**
+         * Generates the QrCode.
+         *
+         * @param string $text
+         * @param string|null $filename
+         * @return void|\Illuminate\Support\HtmlString|string 
+         * @throws WriterException
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function generate($text, $filename = null)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->generate($text, $filename);
+        }
+                    /**
+         * Merges an image over the QrCode.
+         *
+         * @param string $filepath
+         * @param float $percentage
+         * @param \SimpleSoftwareIO\QrCode\SimpleSoftwareIO\QrCode\boolean|bool $absolute
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function merge($filepath, $percentage = 0.2, $absolute = false)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->merge($filepath, $percentage, $absolute);
+        }
+                    /**
+         * Merges an image string with the center of the QrCode.
+         *
+         * @param string $content
+         * @param float $percentage
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function mergeString($content, $percentage = 0.2)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->mergeString($content, $percentage);
+        }
+                    /**
+         * Sets the size of the QrCode.
+         *
+         * @param int $pixels
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function size($pixels)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->size($pixels);
+        }
+                    /**
+         * Sets the format of the QrCode.
+         *
+         * @param string $format
+         * @return \Generator 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function format($format)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->format($format);
+        }
+                    /**
+         * Sets the foreground color of the QrCode.
+         *
+         * @param int $red
+         * @param int $green
+         * @param int $blue
+         * @param null|int $alpha
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function color($red, $green, $blue, $alpha = null)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->color($red, $green, $blue, $alpha);
+        }
+                    /**
+         * Sets the background color of the QrCode.
+         *
+         * @param int $red
+         * @param int $green
+         * @param int $blue
+         * @param null|int $alpha
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function backgroundColor($red, $green, $blue, $alpha = null)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->backgroundColor($red, $green, $blue, $alpha);
+        }
+                    /**
+         * Sets the eye color for the provided eye index.
+         *
+         * @param int $eyeNumber
+         * @param int $innerRed
+         * @param int $innerGreen
+         * @param int $innerBlue
+         * @param int $outterRed
+         * @param int $outterGreen
+         * @param int $outterBlue
+         * @return \Generator 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function eyeColor($eyeNumber, $innerRed, $innerGreen, $innerBlue, $outterRed = 0, $outterGreen = 0, $outterBlue = 0)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->eyeColor($eyeNumber, $innerRed, $innerGreen, $innerBlue, $outterRed, $outterGreen, $outterBlue);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function gradient($startRed, $startGreen, $startBlue, $endRed, $endGreen, $endBlue, $type)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->gradient($startRed, $startGreen, $startBlue, $endRed, $endGreen, $endBlue, $type);
+        }
+                    /**
+         * Sets the eye style.
+         *
+         * @param string $style
+         * @return \Generator 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function eye($style)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->eye($style);
+        }
+                    /**
+         * Sets the style of the blocks for the QrCode.
+         *
+         * @param string $style
+         * @param float $size
+         * @return \Generator 
+         * @throws InvalidArgumentException
+         * @static 
+         */ 
+        public static function style($style, $size = 0.5)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->style($style, $size);
+        }
+                    /**
+         * Sets the encoding for the QrCode.
+         * 
+         * Possible values are
+         * ISO-8859-2, ISO-8859-3, ISO-8859-4, ISO-8859-5, ISO-8859-6,
+         * ISO-8859-7, ISO-8859-8, ISO-8859-9, ISO-8859-10, ISO-8859-11,
+         * ISO-8859-12, ISO-8859-13, ISO-8859-14, ISO-8859-15, ISO-8859-16,
+         * SHIFT-JIS, WINDOWS-1250, WINDOWS-1251, WINDOWS-1252, WINDOWS-1256,
+         * UTF-16BE, UTF-8, ASCII, GBK, EUC-KR.
+         *
+         * @param string $encoding
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function encoding($encoding)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->encoding($encoding);
+        }
+                    /**
+         * Sets the error correction for the QrCode.
+         * 
+         * L: 7% loss.
+         * M: 15% loss.
+         * Q: 25% loss.
+         * H: 30% loss.
+         *
+         * @param string $errorCorrection
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function errorCorrection($errorCorrection)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->errorCorrection($errorCorrection);
+        }
+                    /**
+         * Sets the margin of the QrCode.
+         *
+         * @param int $margin
+         * @return \Generator 
+         * @static 
+         */ 
+        public static function margin($margin)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->margin($margin);
+        }
+                    /**
+         * Fetches the Writer.
+         *
+         * @param \BaconQrCode\Renderer\ImageRenderer $renderer
+         * @return \BaconQrCode\Writer 
+         * @static 
+         */ 
+        public static function getWriter($renderer)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getWriter($renderer);
+        }
+                    /**
+         * Fetches the Image Renderer.
+         *
+         * @return \BaconQrCode\Renderer\ImageRenderer 
+         * @static 
+         */ 
+        public static function getRenderer()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getRenderer();
+        }
+                    /**
+         * Returns the Renderer Style.
+         *
+         * @return \BaconQrCode\Renderer\RendererStyle\RendererStyle 
+         * @static 
+         */ 
+        public static function getRendererStyle()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getRendererStyle();
+        }
+                    /**
+         * Fetches the formatter.
+         *
+         * @return \BaconQrCode\Renderer\Image\ImageBackEndInterface 
+         * @static 
+         */ 
+        public static function getFormatter()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getFormatter();
+        }
+                    /**
+         * Fetches the module.
+         *
+         * @return \BaconQrCode\Renderer\Module\ModuleInterface 
+         * @static 
+         */ 
+        public static function getModule()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getModule();
+        }
+                    /**
+         * Fetches the eye style.
+         *
+         * @return \BaconQrCode\Renderer\Eye\EyeInterface 
+         * @static 
+         */ 
+        public static function getEye()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getEye();
+        }
+                    /**
+         * Fetches the color fill.
+         *
+         * @return \BaconQrCode\Renderer\RendererStyle\Fill 
+         * @static 
+         */ 
+        public static function getFill()
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->getFill();
+        }
+                    /**
+         * Creates a RGB or Alpha channel color.
+         *
+         * @param int $red
+         * @param int $green
+         * @param int $blue
+         * @param null|int $alpha
+         * @return \BaconQrCode\Renderer\Color\ColorInterface 
+         * @static 
+         */ 
+        public static function createColor($red, $green, $blue, $alpha = null)
+        {
+                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
+                        return $instance->createColor($red, $green, $blue, $alpha);
+        }
+         
+    }
+     
+}
+
     namespace Barryvdh\Debugbar { 
             /**
      * 
@@ -16172,305 +16477,274 @@
      
 }
 
-    namespace SimpleSoftwareIO\QrCode\Facades { 
+    namespace Qoraiche\MailEclipse\Facades { 
             /**
      * 
      *
+     * @see \Qoraiche\MailEclipse\MailEclipse
      */ 
-        class QrCode {
+        class MailEclipse {
                     /**
-         * Generates the QrCode.
+         * 
          *
-         * @param string $text
-         * @param string|null $filename
-         * @return void|\Illuminate\Support\HtmlString|string 
-         * @throws WriterException
-         * @throws InvalidArgumentException
+         * @return array 
+         * @throws \ReflectionException
          * @static 
          */ 
-        public static function generate($text, $filename = null)
+        public static function getMailables()
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->generate($text, $filename);
-        }
-                    /**
-         * Merges an image over the QrCode.
-         *
-         * @param string $filepath
-         * @param float $percentage
-         * @param \SimpleSoftwareIO\QrCode\SimpleSoftwareIO\QrCode\boolean|bool $absolute
-         * @return \Generator 
-         * @static 
-         */ 
-        public static function merge($filepath, $percentage = 0.2, $absolute = false)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->merge($filepath, $percentage, $absolute);
-        }
-                    /**
-         * Merges an image string with the center of the QrCode.
-         *
-         * @param string $content
-         * @param float $percentage
-         * @return \Generator 
-         * @static 
-         */ 
-        public static function mergeString($content, $percentage = 0.2)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->mergeString($content, $percentage);
-        }
-                    /**
-         * Sets the size of the QrCode.
-         *
-         * @param int $pixels
-         * @return \Generator 
-         * @static 
-         */ 
-        public static function size($pixels)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->size($pixels);
-        }
-                    /**
-         * Sets the format of the QrCode.
-         *
-         * @param string $format
-         * @return \Generator 
-         * @throws InvalidArgumentException
-         * @static 
-         */ 
-        public static function format($format)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->format($format);
-        }
-                    /**
-         * Sets the foreground color of the QrCode.
-         *
-         * @param int $red
-         * @param int $green
-         * @param int $blue
-         * @param null|int $alpha
-         * @return \Generator 
-         * @static 
-         */ 
-        public static function color($red, $green, $blue, $alpha = null)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->color($red, $green, $blue, $alpha);
-        }
-                    /**
-         * Sets the background color of the QrCode.
-         *
-         * @param int $red
-         * @param int $green
-         * @param int $blue
-         * @param null|int $alpha
-         * @return \Generator 
-         * @static 
-         */ 
-        public static function backgroundColor($red, $green, $blue, $alpha = null)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->backgroundColor($red, $green, $blue, $alpha);
-        }
-                    /**
-         * Sets the eye color for the provided eye index.
-         *
-         * @param int $eyeNumber
-         * @param int $innerRed
-         * @param int $innerGreen
-         * @param int $innerBlue
-         * @param int $outterRed
-         * @param int $outterGreen
-         * @param int $outterBlue
-         * @return \Generator 
-         * @throws InvalidArgumentException
-         * @static 
-         */ 
-        public static function eyeColor($eyeNumber, $innerRed, $innerGreen, $innerBlue, $outterRed = 0, $outterGreen = 0, $outterBlue = 0)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->eyeColor($eyeNumber, $innerRed, $innerGreen, $innerBlue, $outterRed, $outterGreen, $outterBlue);
+                        return \Qoraiche\MailEclipse\MailEclipse::getMailables();
         }
                     /**
          * 
          *
+         * @param $key
+         * @param $name
+         * @return \Illuminate\Support\Collection 
+         * @throws \ReflectionException
          * @static 
          */ 
-        public static function gradient($startRed, $startGreen, $startBlue, $endRed, $endGreen, $endBlue, $type)
+        public static function getMailable($key, $name)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->gradient($startRed, $startGreen, $startBlue, $endRed, $endGreen, $endBlue, $type);
+                        return \Qoraiche\MailEclipse\MailEclipse::getMailable($key, $name);
         }
                     /**
-         * Sets the eye style.
-         *
-         * @param string $style
-         * @return \Generator 
-         * @throws InvalidArgumentException
-         * @static 
-         */ 
-        public static function eye($style)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->eye($style);
-        }
-                    /**
-         * Sets the style of the blocks for the QrCode.
-         *
-         * @param string $style
-         * @param float $size
-         * @return \Generator 
-         * @throws InvalidArgumentException
-         * @static 
-         */ 
-        public static function style($style, $size = 0.5)
-        {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->style($style, $size);
-        }
-                    /**
-         * Sets the encoding for the QrCode.
          * 
-         * Possible values are
-         * ISO-8859-2, ISO-8859-3, ISO-8859-4, ISO-8859-5, ISO-8859-6,
-         * ISO-8859-7, ISO-8859-8, ISO-8859-9, ISO-8859-10, ISO-8859-11,
-         * ISO-8859-12, ISO-8859-13, ISO-8859-14, ISO-8859-15, ISO-8859-16,
-         * SHIFT-JIS, WINDOWS-1250, WINDOWS-1251, WINDOWS-1252, WINDOWS-1256,
-         * UTF-16BE, UTF-8, ASCII, GBK, EUC-KR.
          *
-         * @param string $encoding
-         * @return \Generator 
+         * @param $templateSlug
+         * @return bool 
          * @static 
          */ 
-        public static function encoding($encoding)
+        public static function deleteTemplate($templateSlug)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->encoding($encoding);
+                        return \Qoraiche\MailEclipse\MailEclipse::deleteTemplate($templateSlug);
         }
                     /**
-         * Sets the error correction for the QrCode.
          * 
-         * L: 7% loss.
-         * M: 15% loss.
-         * Q: 25% loss.
-         * H: 30% loss.
          *
-         * @param string $errorCorrection
-         * @return \Generator 
+         * @return string 
          * @static 
          */ 
-        public static function errorCorrection($errorCorrection)
+        public static function getTemplatesFile()
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->errorCorrection($errorCorrection);
+                        return \Qoraiche\MailEclipse\MailEclipse::getTemplatesFile();
         }
                     /**
-         * Sets the margin of the QrCode.
+         * Save templates to templates.json file.
          *
-         * @param int $margin
-         * @return \Generator 
+         * @param \Illuminate\Support\Collection $templates
          * @static 
          */ 
-        public static function margin($margin)
+        public static function saveTemplates($templates)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->margin($margin);
+                        return \Qoraiche\MailEclipse\MailEclipse::saveTemplates($templates);
         }
                     /**
-         * Fetches the Writer.
+         * 
          *
-         * @param \BaconQrCode\Renderer\ImageRenderer $renderer
-         * @return \BaconQrCode\Writer 
+         * @param $request
+         * @return \Illuminate\Http\JsonResponse|null 
          * @static 
          */ 
-        public static function getWriter($renderer)
+        public static function updateTemplate($request)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->getWriter($renderer);
+                        return \Qoraiche\MailEclipse\MailEclipse::updateTemplate($request);
         }
                     /**
-         * Fetches the Image Renderer.
+         * 
          *
-         * @return \BaconQrCode\Renderer\ImageRenderer 
+         * @param $templateSlug
+         * @return \Illuminate\Support\Collection|null 
          * @static 
          */ 
-        public static function getRenderer()
+        public static function getTemplate($templateSlug)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->getRenderer();
+                        return \Qoraiche\MailEclipse\MailEclipse::getTemplate($templateSlug);
         }
                     /**
-         * Returns the Renderer Style.
+         * Get templates collection.
          *
-         * @return \BaconQrCode\Renderer\RendererStyle\RendererStyle 
+         * @return \Illuminate\Support\Collection 
          * @static 
          */ 
-        public static function getRendererStyle()
+        public static function getTemplates()
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->getRendererStyle();
+                        return \Qoraiche\MailEclipse\MailEclipse::getTemplates();
         }
                     /**
-         * Fetches the formatter.
+         * 
          *
-         * @return \BaconQrCode\Renderer\Image\ImageBackEndInterface 
+         * @param $request
+         * @return \Illuminate\Http\JsonResponse 
          * @static 
          */ 
-        public static function getFormatter()
+        public static function createTemplate($request)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->getFormatter();
+                        return \Qoraiche\MailEclipse\MailEclipse::createTemplate($request);
         }
                     /**
-         * Fetches the module.
+         * Markdowned template view.
          *
-         * @return \BaconQrCode\Renderer\Module\ModuleInterface 
          * @static 
          */ 
-        public static function getModule()
+        public static function markdownedTemplateToView($save = true, $content = '', $viewPath = '', $template = false)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->getModule();
+                        return \Qoraiche\MailEclipse\MailEclipse::markdownedTemplateToView($save, $content, $viewPath, $template);
         }
                     /**
-         * Fetches the eye style.
+         * 
          *
-         * @return \BaconQrCode\Renderer\Eye\EyeInterface 
+         * @param $simpleview
+         * @param $content
+         * @param $viewName
+         * @param bool $template
+         * @param null $namespace
+         * @return bool|string|void 
+         * @throws \ReflectionException
          * @static 
          */ 
-        public static function getEye()
+        public static function previewMarkdownViewContent($simpleview, $content, $viewName, $template = false, $namespace = null)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->getEye();
+                        return \Qoraiche\MailEclipse\MailEclipse::previewMarkdownViewContent($simpleview, $content, $viewName, $template, $namespace);
         }
                     /**
-         * Fetches the color fill.
+         * 
          *
-         * @return \BaconQrCode\Renderer\RendererStyle\Fill 
+         * @param $instance
+         * @param $view
+         * @return string|void 
          * @static 
          */ 
-        public static function getFill()
+        public static function previewMarkdownHtml($instance, $view)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->getFill();
+                        return \Qoraiche\MailEclipse\MailEclipse::previewMarkdownHtml($instance, $view);
         }
                     /**
-         * Creates a RGB or Alpha channel color.
+         * 
          *
-         * @param int $red
-         * @param int $green
-         * @param int $blue
-         * @param null|int $alpha
-         * @return \BaconQrCode\Renderer\Color\ColorInterface 
+         * @param $mailableName
+         * @return array|bool 
          * @static 
          */ 
-        public static function createColor($red, $green, $blue, $alpha = null)
+        public static function getMailableTemplateData($mailableName)
         {
-                        /** @var \SimpleSoftwareIO\QrCode\Generator $instance */
-                        return $instance->createColor($red, $green, $blue, $alpha);
+                        return \Qoraiche\MailEclipse\MailEclipse::getMailableTemplateData($mailableName);
+        }
+                    /**
+         * 
+         *
+         * @param null $request
+         * @return \Illuminate\Http\JsonResponse 
+         * @static 
+         */ 
+        public static function generateMailable($request = null)
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::generateMailable($request);
+        }
+                    /**
+         * Handle Mailable Constructor arguments and pass the fake ones.
+         *
+         * @param $mailable
+         * @return object|void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function handleMailableViewDataArgs($mailable)
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::handleMailableViewDataArgs($mailable);
+        }
+                    /**
+         * 
+         *
+         * @param $instance
+         * @param string $type
+         * @return mixed 
+         * @throws \Illuminate\Contracts\Container\BindingResolutionException
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function buildMailable($instance, $type = 'call')
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::buildMailable($instance, $type);
+        }
+                    /**
+         * 
+         *
+         * @param $simpleview
+         * @param $view
+         * @param bool $template
+         * @param null $instance
+         * @return string|void 
+         * @throws \Illuminate\Contracts\Container\BindingResolutionException
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function renderPreview($simpleview, $view, $template = false, $instance = null)
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::renderPreview($simpleview, $view, $template, $instance);
+        }
+                    /**
+         * Class name has to satisfy those rules.
+         * 
+         * https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.class
+         * https://www.php.net/manual/en/reserved.keywords.php
+         *
+         * @param $input
+         * @return string|false class name or false on failure
+         * @static 
+         */ 
+        public static function generateClassName($input)
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::generateClassName($input);
+        }
+                    /**
+         * Load the relations for the model and the relation.
+         *
+         * @todo Account for the many type relations, link back to parent model for belongsTo
+         * @param mixed $relationName
+         * @param mixed $factoryModel
+         * @param mixed|null $eloquentFactory
+         * @return null|object 
+         * @static 
+         */ 
+        public static function loadRelations($relationName, $factoryModel, $eloquentFactory = null)
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::loadRelations($relationName, $factoryModel, $eloquentFactory);
+        }
+                    /**
+         * 
+         *
+         * @param string $name
+         * @return bool|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function renderMailable($name)
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::renderMailable($name);
+        }
+                    /**
+         * 
+         *
+         * @param string $name
+         * @param string $recipient
+         * @static 
+         */ 
+        public static function sendTest($name, $recipient)
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::sendTest($name, $recipient);
+        }
+                    /**
+         * 
+         *
+         * @param $mailable
+         * @param string $email
+         * @return mixed 
+         * @static 
+         */ 
+        public static function setMailableSendTestRecipient($mailable, $email)
+        {
+                        return \Qoraiche\MailEclipse\MailEclipse::setMailableSendTestRecipient($mailable, $email);
         }
          
     }
@@ -16581,6 +16855,35 @@
         public static function emailVerification()
         {
                         return \Illuminate\Routing\Router::emailVerification();
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Route {
+                    /**
+         * 
+         *
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $roles
+         * @static 
+         */ 
+        public static function role($roles = [])
+        {
+                        return \Illuminate\Routing\Route::role($roles);
+        }
+                    /**
+         * 
+         *
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $permissions
+         * @static 
+         */ 
+        public static function permission($permissions = [])
+        {
+                        return \Illuminate\Routing\Route::permission($permissions);
         }
          
     }
@@ -19802,9 +20105,10 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class DataTables extends \Yajra\DataTables\Facades\DataTables {}
+            class QrCode extends \SimpleSoftwareIO\QrCode\Facades\QrCode {}
             class Debugbar extends \Barryvdh\Debugbar\Facade {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
-            class QrCode extends \SimpleSoftwareIO\QrCode\Facades\QrCode {}
+            class MailEclipse extends \Qoraiche\MailEclipse\Facades\MailEclipse {}
      
 }
 

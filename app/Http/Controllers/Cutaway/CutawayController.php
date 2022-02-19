@@ -189,6 +189,8 @@ class CutawayController extends BaseController
     {
         $data = [
             'link' => $request->post('link'),
+            'background_color' => $request->post('background_color'),
+            'color' => $request->post('color'),
             'text' => $request->post('text'),
         ];
         $result = \DB::table('contact_profile')->where(['profile_id' => $profileId, 'slug' => $id])->update($data);
@@ -198,6 +200,10 @@ class CutawayController extends BaseController
 
     public function deleteContact(Request $request, $profileId, $id)
     {
+        $profile = Profile::findOrFail($profileId);
+        if ($profile && $profile->user_img){
+            \Storage::disk('user_img')->delete(str_replace('user_img','', $profile->user_img));
+        }
         $result = \DB::table('contact_profile')->where(['profile_id' => $profileId, 'slug' => $id])->delete();
         $profile = Profile::find($profileId);
         return redirect()->route('edit', $profileId);

@@ -27,6 +27,7 @@
         </div>
         <div class="card-body mt-5">
             <form id="edit-contact" method="POST"
+
                   action="{{ route('edit.edit-contact', [$contact->profile_id, $contact->slug]) }}"
                   enctype="multipart/form-data">
                 @csrf
@@ -39,10 +40,22 @@
                            name="link" value="{{ $contact->link }}" placeholder="{{ $contactOrigin->example }}"
                            autocomplete="link">
                     @error('link')
-                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
                     @enderror
+                </div>
+                <div class="form-group">
+                    <div id="app">
+                        <div class="d-flex justify-content-between">
+                            <label for="color" class="form-label">Цвет кнопки</label>
+                        </div>
+                        <color-piker nameinput='color' data="{{ $contact->color }}"> </color-piker>
+                        <div class="d-flex justify-content-between">
+                            <label for="color" class="form-label">Фоновый цвет кнопки</label>
+                        </div>
+                        <color-piker nameinput='background_color'  data="{{ $contact->background_color }}"> </color-piker>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -53,8 +66,8 @@
                            name="text" value="{{ $contact->text }}" autocomplete="text">
                     @error('text')
                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                        <strong>{{ $message }}</strong>
+                    </span>
                     @enderror
                 </div>
             </form>

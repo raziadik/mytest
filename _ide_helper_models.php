@@ -28,6 +28,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $sort
  * @property-read int|null $profiles_count
  * @method static \Database\Factories\ContactFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Contact newModelQuery()
@@ -43,6 +44,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Contact whereLogo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contact whereMainLink($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contact whereMainText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Contact whereSort($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contact whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Contact whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|Contact withTrashed()
@@ -55,9 +57,29 @@ namespace App\Models{
 /**
  * App\Models\ContactProfile
  *
+ * @property int $contact_id
+ * @property int $profile_id
+ * @property string|null $link
+ * @property string|null $text
+ * @property string|null $slug
+ * @property int $order_button
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $background_color
+ * @property string|null $color
  * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereBackgroundColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereColor($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereContactId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereOrderButton($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereProfileId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ContactProfile whereUpdatedAt($value)
  */
 	class ContactProfile extends \Eloquent {}
 }
@@ -99,33 +121,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Student
- *
- * @property int $id
- * @property string $name
- * @property string $email
- * @property string $username
- * @property string $phone
- * @property string $dob
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Student newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Student newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Student query()
- * @method static \Illuminate\Database\Eloquent\Builder|Student whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Student whereDob($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Student whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Student whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Student whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Student wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Student whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Student whereUsername($value)
- */
-	class Student extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
  * Class User
  *
  * @property integer $id
@@ -144,6 +139,8 @@ namespace App\Models{
  * @package App\Models
  * @mixin Eloquent
  * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property int $type
+ * @property string|null $comment
  * @property-read bool $is_admin
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
@@ -152,6 +149,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Query\Builder|User onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
@@ -162,6 +160,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  * @method static \Illuminate\Database\Query\Builder|User withTrashed()
