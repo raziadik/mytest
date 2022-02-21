@@ -19,7 +19,7 @@ class RolesController extends Controller
      */
     public function index(): \Illuminate\Http\Response
     {
-        if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('edit_profile')) {
             return abort(401);
         }
 
@@ -35,7 +35,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('edit_profile')) {
             return abort(401);
         }
         $permissions = Permission::get()->pluck('name', 'name');
@@ -51,7 +51,7 @@ class RolesController extends Controller
      */
     public function store(StoreRolesRequest $request)
     {
-        if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('edit_profile')) {
             return abort(401);
         }
         $role = Role::create($request->except('permission'));
@@ -70,12 +70,12 @@ class RolesController extends Controller
      */
     public function edit(Role $role)
     {
-        if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('edit_profile')) {
             return abort(401);
         }
         $permissions = Permission::get()->pluck('name', 'name');
 
-        return view('admin.roles.edit', compact('role', 'permissions'));
+        return view('roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -87,7 +87,7 @@ class RolesController extends Controller
      */
     public function update(UpdateRolesRequest $request, Role $role)
     {
-        if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('edit_profile')) {
             return abort(401);
         }
 
@@ -100,13 +100,13 @@ class RolesController extends Controller
 
     public function show(Role $role)
     {
-        if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('edit_profile')) {
             return abort(401);
         }
 
         $role->load('permissions');
 
-        return view('admin.roles.show', compact('role'));
+        return view('roles.show', compact('role'));
     }
 
 
@@ -118,7 +118,7 @@ class RolesController extends Controller
      */
     public function destroy(Role $role)
     {
-        if (! Gate::allows('users_manage')) {
+        if (! Gate::allows('edit_profile')) {
             return abort(401);
         }
 

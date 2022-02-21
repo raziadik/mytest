@@ -19,5 +19,9 @@ class DatabaseSeeder extends Seeder
         User::factory(15)->create();
         $this->call(ProfileTableSeeder::class);
         Contact::factory(10)->create();
+
+        $this->call(PermissionSeed::class);
+        $this->call(RoleSeed::class);
+        $this->call(UserSeed::class);
     }
 }
