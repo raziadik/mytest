@@ -74,6 +74,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                        <a class="nav-link" href="{{ route("permissions.index") }}">
+                        <span data-feather="plus-square"></span>
+                        Доступы
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route("roles.index") }}">
+                        <span data-feather="plus-square"></span>
+                        Роли
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">
                         <span data-feather="layers"></span>
                         Сайт

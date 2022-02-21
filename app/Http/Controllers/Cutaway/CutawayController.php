@@ -29,8 +29,10 @@ class CutawayController extends BaseController
             $canEdit = Gate::allows('edit_profile', $user->profile);
             return view('cutaway.show', compact('user', 'canEdit'));
         }
+
         $user = User::findByHash($link);
-        if ($user->username) {
+
+        if ($user) {
             return redirect('/' . $user->username);
         }
         if (Auth::check()) {

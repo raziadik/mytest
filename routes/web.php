@@ -17,6 +17,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
     Route::post('/login', [App\Http\Controllers\Admin\AdminController::class, 'login'])->name('admin.login');
 
     Route::middleware('admin')->group(function () {
+        //permissions
+        Route::resource('permissions', 'PermissionsController');
+        Route::delete('permissions_mass_destroy', 'PermissionsController@massDestroy')->name('permissions.mass_destroy');
+        Route::resource('roles', 'RolesController');
+        Route::delete('roles_mass_destroy', 'RolesController@massDestroy')->name('roles.mass_destroy');
+
         Route::get('search-user', [App\Http\Controllers\StudentController::class, 'index'])->name('search');
         Route::get('search-user/list', [App\Http\Controllers\StudentController::class, 'getStudents'])->name('students.list');
 

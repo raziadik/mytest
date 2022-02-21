@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Profile;
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User
@@ -33,7 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes, HasRoles;
 
     /**
      *  Users roles
