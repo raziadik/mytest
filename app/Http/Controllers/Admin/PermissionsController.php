@@ -24,7 +24,7 @@ class PermissionsController extends Controller
 
         $permissions = Permission::all();
 
-        return view('permissions.index', compact('permissions'));
+        return view('admin.permissions.index', compact('permissions'));
     }
 
     /**
@@ -37,7 +37,7 @@ class PermissionsController extends Controller
         if (! Gate::allows('all_manage')) {
             return abort(401);
         }
-        return view('permissions.create');
+        return view('admin.permissions.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class PermissionsController extends Controller
             return abort(401);
         }
 
-        return view('permissions.edit', compact('permission'));
+        return view('admin.permissions.edit', compact('permission'));
     }
 
     /**
@@ -114,7 +114,7 @@ class PermissionsController extends Controller
             return abort(401);
         }
 
-        return view('permissions.show', compact('permission'));
+        return view('admin.permissions.show', compact('permission'));
     }
 
     /**

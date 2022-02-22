@@ -17,7 +17,7 @@ class RolesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(): \Illuminate\Http\Response
+    public function index()
     {
         if (! Gate::allows('all_manage')) {
             return abort(401);
@@ -25,7 +25,7 @@ class RolesController extends Controller
 
         $roles = Role::all();
 
-        return view('roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
@@ -75,7 +75,7 @@ class RolesController extends Controller
         }
         $permissions = Permission::get()->pluck('name', 'name');
 
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('admin.roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -106,7 +106,7 @@ class RolesController extends Controller
 
         $role->load('permissions');
 
-        return view('roles.show', compact('role'));
+        return view('admin.roles.show', compact('role'));
     }
 
 
