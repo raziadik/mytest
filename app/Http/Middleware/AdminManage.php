@@ -19,7 +19,7 @@ class AdminManage
     public function handle(Request $request, Closure $next)
     {
 
-        if (!Auth::check() || !(Auth::user()->role == User::ROLE_ADMIN)) {
+        if (!Auth::check() || !(Auth::user()->hasAnyRole('administrator', 'manager'))) {
             abort(403);
         }
         return $next($request);

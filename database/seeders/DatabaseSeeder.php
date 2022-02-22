@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -16,9 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(15)->create();
-        $this->call(ProfileTableSeeder::class);
-        Contact::factory(10)->create();
 
         $this->call(PermissionSeed::class);
         $this->call(RoleSeed::class);

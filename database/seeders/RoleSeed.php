@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
@@ -15,7 +16,7 @@ class RoleSeed extends Seeder
         $roleAdministrator = Role::create(['name' => 'administrator']);
         $roleManager = Role::create(['name' => 'manager']);
 
-        $roleAdministrator->givePermissionTo('edit_profile');
-        $roleManager->givePermissionTo('user_manager');
+        $roleAdministrator->givePermissionTo('all_manage');
+        $roleManager->givePermissionTo('user_manage');
     }
 }

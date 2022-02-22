@@ -14,7 +14,7 @@ class AdminContactUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->isAdmin;
+        return  Auth::user()->hasAnyRole('administrator', 'moderator');
     }
 
     /**

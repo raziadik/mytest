@@ -26,7 +26,7 @@ class CutawayController extends BaseController
     {
         $user = User::findByUsername($link);
         if ($user) {
-            $canEdit = Gate::allows('edit_profile', $user->profile);
+            $canEdit = Gate::allows('all_manage', $user->profile);
             return view('cutaway.show', compact('user', 'canEdit'));
         }
 
@@ -48,7 +48,7 @@ class CutawayController extends BaseController
     {
         $profile = Profile::findOrFail($profileId);
         $contacts = Contact::all();
-        if (!Gate::allows('edit_profile', $profile)) {
+        if (!Gate::allows('all_manage', $profile)) {
             abort(403);
         }
         return view('cutaway.edit', compact('profile', 'contacts'));
@@ -58,7 +58,7 @@ class CutawayController extends BaseController
     {
         $profile = Profile::findOrFail($profileId);
 
-        if (!Gate::allows('edit_profile', $profile)) {
+        if (!Gate::allows('all_manage', $profile)) {
             abort(403);
         }
         return view('cutaway.profile', compact('profile'));
@@ -67,7 +67,7 @@ class CutawayController extends BaseController
     public function save(UserProfileCreateRequest $request, $profileId)
     {
         $profile = Profile::findOrFail($profileId);
-        if (!Gate::allows('edit_profile', $profile)) {
+        if (!Gate::allows('all_manage', $profile)) {
             abort(403);
         }
         $data = $request->all();
@@ -90,7 +90,7 @@ class CutawayController extends BaseController
     public function uploadAvatar(Request $request, $profileId)
     {
         $profile = Profile::findOrFail($profileId);
-        if (!Gate::allows('edit_profile', $profile)) {
+        if (!Gate::allows('all_manage', $profile)) {
             abort(403);
         }
 		$data=[];
@@ -131,7 +131,7 @@ class CutawayController extends BaseController
     public function addContact(Request $request, $profileId, $contactId)
     {
         $profile = Profile::find($profileId);
-        if (!Gate::allows('edit_profile', $profile)) {
+        if (!Gate::allows('all_manage', $profile)) {
             abort(403);
         }
 
@@ -166,11 +166,11 @@ class CutawayController extends BaseController
     public function editContact(Request $request, $profileId, $contactId)
     {
         $profile = Profile::find($profileId);
-        if (!Gate::allows('edit_profile', $profile)) {
+        if (!Gate::allows('all_manage', $profile)) {
             abort(403);
         }
 //        $contact = \DB::table('contact_profile')->where(['profile_id' => $profileId, 'slug' => $contactId])->first();
-        $contact = ContactProfile::where('profile_id',$profileId)->where('slug',$contactId)->first();
+        $contact = ContactProfile::where('profile_id', $profileId)->where('slug',$contactId)->first();
 
         $contactOrigin = Contact::where('id', $contact->contact_id)->first();
         return view('cutaway.edit-contact', compact('profile', 'contact', 'contactOrigin'));

@@ -44,7 +44,7 @@
             </div>
             <div class=" text-center mt-4">
                 @auth
-                    @if (Auth::user()->isAdmin)
+                    @if (auth()->user()->can('all_manage'))
                         <ul class="mb-2">
                             <a type="button" class="btn btn-lg btn-secondary" style="border-radius: 20px; width: 200px"
                                href="{{ route('admin.dashboard') }}">Админ панель</a>

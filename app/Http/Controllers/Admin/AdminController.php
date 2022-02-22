@@ -59,7 +59,7 @@ class AdminController extends BaseController
      */
     public function showLoginForm()
     {
-        if (Auth::user() && Auth::user()->isAdmin) {
+        if (Auth::user() && Auth::user()->hasAnyRole('administrator', 'moderator')) {
             return redirect($this->redirectTo);
         }
         return view('admin.login');

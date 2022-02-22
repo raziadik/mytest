@@ -18,7 +18,7 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        if (! Gate::allows('edit_profile')) {
+        if (! Gate::allows('all_manage')) {
             return abort(401);
         }
 
@@ -34,7 +34,7 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        if (! Gate::allows('edit_profile')) {
+        if (! Gate::allows('all_manage')) {
             return abort(401);
         }
         return view('permissions.create');
@@ -48,7 +48,7 @@ class PermissionsController extends Controller
      */
     public function store(StorePermissionsRequest $request)
     {
-        if (! Gate::allows('edit_profile')) {
+        if (! Gate::allows('all_manage')) {
             return abort(401);
         }
         Permission::create($request->all());
@@ -65,7 +65,7 @@ class PermissionsController extends Controller
      */
     public function edit(Permission $permission)
     {
-        if (! Gate::allows('edit_profile')) {
+        if (! Gate::allows('all_manage')) {
             return abort(401);
         }
 
@@ -81,7 +81,7 @@ class PermissionsController extends Controller
      */
     public function update(UpdatePermissionsRequest $request, Permission $permission)
     {
-        if (! Gate::allows('edit_profile')) {
+        if (! Gate::allows('all_manage')) {
             return abort(401);
         }
 
@@ -99,7 +99,7 @@ class PermissionsController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        if (! Gate::allows('edit_profile')) {
+        if (! Gate::allows('all_manage')) {
             return abort(401);
         }
 
@@ -110,7 +110,7 @@ class PermissionsController extends Controller
 
     public function show(Permission $permission)
     {
-        if (! Gate::allows('edit_profile')) {
+        if (! Gate::allows('all_manage')) {
             return abort(401);
         }
 
