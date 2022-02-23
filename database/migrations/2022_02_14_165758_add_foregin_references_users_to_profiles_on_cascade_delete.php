@@ -14,7 +14,7 @@ class AddForeginReferencesUsersToProfilesOnCascadeDelete extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('profiles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

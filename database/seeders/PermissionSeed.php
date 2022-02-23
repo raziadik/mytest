@@ -19,5 +19,6 @@ class PermissionSeed extends Seeder
         
         Permission::create(['name' => 'all_manage']);
         Permission::create(['name' => 'user_manage']);
+        Permission::create(['name' => 'user_permission']);
     }
 }

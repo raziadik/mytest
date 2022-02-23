@@ -14,10 +14,10 @@ class UserSeed extends Seeder
      */
     public function run()
     {
-/*        $user = User::create([
-            'username' => 'Admin',
-            'hash' => 'Admin',
-            'email' => 'admin@admin.com',
+        $user = User::create([
+            'username' => 'User',
+            'hash' => 'User',
+            'email' => 'user@admin.com',
             'password' => bcrypt('password'),
             'type' => 0
         ]);
@@ -27,12 +27,18 @@ class UserSeed extends Seeder
             'email' => 'manager@manager.com',
             'password' => bcrypt('password'),
             'type' => 0
-        ]);*/
-        $admin = User::whereId(1);
+        ]);
+        $admin = User::create([
+            'username' => 'Admin',
+            'hash' => 'Admin',
+            'email' => 'admin@manager.com',
+            'password' => bcrypt('password'),
+            'type' => 0
+        ]);
 
+        $user->assignRole('user');
+        $manager->assignRole('manager');
         $admin->assignRole('administrator');
-    /*    $manager->assignRole('manager');
-        $user->assignRole('administrator');*/
 
     }
 }
