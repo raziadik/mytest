@@ -47,11 +47,9 @@
                     <label for="role" class="col-md-4 col-form-label text-md-right">Роль</label>
                     <div class="col-md-6">
                         <select name="role" id="role" class="form-control">
-                            @foreach($roles as $id => $title)
-                                <option value="{{ $id }}"
-                                        @if($id == $item->role) selected @endif
-                                >
-                                    {{ $title }}
+                            @foreach($roles as $key => $role)
+                                <option value="{{ $role->name }}" @if($role->id == $item->getRoleId()) selected @endif>
+                                    {{ $role->name }}
                                 </option>
                             @endforeach
                         </select>

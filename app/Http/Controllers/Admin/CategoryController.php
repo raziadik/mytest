@@ -1,27 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Users;
 
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers\Admin;
+
+
 use App\Http\Requests\AdminUserCreateRequest;
 use App\Http\Requests\AdminUserUpdateRequest;
+use App\Models\Category;
 use App\Models\User;
-use Doctrine\DBAL\Schema\Table;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Storage;
-use DataTables;
 use Spatie\Permission\Models\Role;
 
-class UserController extends Controller
+class CategoryController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
+
     public function index(Request $request)
     {
         if (! Gate::allows('all_manage')) {
@@ -29,7 +25,7 @@ class UserController extends Controller
         }
 
         $q = $request->get('q');
-        $paginator = User::with('roles');
+        $paginator = Category::all();
         if ($q) {
             $paginator = $paginator
                 ->where('username', 'like', '%' . $q . '%')
@@ -52,7 +48,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -73,7 +69,7 @@ class UserController extends Controller
 
         if ($item) {
             return redirect()
-                ->route('admin.users.show', $item->id)
+                ->route('admin.categories.show', $item->id)
                 ->with(['success' => 'Пользователь добавлен']);
         } else {
             return back()
@@ -94,7 +90,7 @@ class UserController extends Controller
             return abort(401);
         }
 
-        $item = User::findOrFail($id);
+        $item = Category::findOrFail($id);
         $roles = Role::all();
         $statuses = User::getUserStatuses();
 
@@ -181,7 +177,7 @@ class UserController extends Controller
     public function getStudents(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::latest()->get();
+            $data = Category::latest()->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {

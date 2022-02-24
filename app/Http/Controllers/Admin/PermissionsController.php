@@ -124,6 +124,10 @@ class PermissionsController extends Controller
      */
     public function massDestroy(Request $request)
     {
+        if (! Gate::allows('all_manage')) {
+            return abort(401);
+        }
+
         Permission::whereIn('id', request('ids'))->delete();
 
         return response()->noContent();

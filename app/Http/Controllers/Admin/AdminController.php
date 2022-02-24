@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class AdminController extends BaseController
 {
@@ -22,6 +23,9 @@ class AdminController extends BaseController
     public function dashboard()
 
     {
+        if (! Gate::allows('all_manage')) {
+            return abort(401);
+        }
         $statistics = DB::table('users')
             ->select('created_at', DB::raw("count(*) as cou"))
             ->where('status',1)

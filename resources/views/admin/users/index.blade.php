@@ -51,12 +51,13 @@
                                 </option>
                             </select>
                         </td>
-
                         <td class="text-center align-middle">
                             <select name="role" id="role" class="custom-select text-center">
-                                @foreach($roles as $id => $title)
-                                    <option value="{{ $id }}" @if($id == $item->role) selected @endif>
-                                        {{ $title }}
+                                <option>
+                                </option>
+                                @foreach($roles as $key => $role)
+                                    <option value="{{ $role->name }}" @if($role->id == $item->getRoleId()) selected @endif>
+                                        {{ $role->name }}
                                     </option>
                                 @endforeach
                             </select>

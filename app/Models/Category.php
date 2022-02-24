@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Profile;
+
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * Class User
+ * Class categories
  * @property  integer $id
  * @property  string $username
  * @property  string $password
@@ -33,7 +33,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @mixin Eloquent
  *
  */
-class User extends Authenticatable
+class Category extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes, BasicHasRoles;
 
@@ -161,15 +161,7 @@ class User extends Authenticatable
     //     ];
     // }
 
-    /**
-     * Find user by hash
-     * @param string $hash
-     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|User
-     */
 
-    public static function findByHash($hash) {
-        return User::select()->where(['hash' => $hash])->first();
-    }
 
     /**
      * Find user by username
@@ -186,5 +178,11 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-
+    /**
+     * The profile attributes that belong to the category.
+     */
+    public function filterableAttributes(): BelongsToMany
+    {
+        return $this->belongsToMany( 'category_profile');
+    }
 }
