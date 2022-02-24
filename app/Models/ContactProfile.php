@@ -21,4 +21,10 @@ class ContactProfile extends Model
         'background_color',
         'color',
     ];
+
+
+    public function filterableAttributes(): BelongsToMany
+    {
+        return $this->belongsToMany( 'category_profile');
+    }
 }
