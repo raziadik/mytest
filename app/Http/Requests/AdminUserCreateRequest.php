@@ -14,7 +14,7 @@ class AdminUserCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return  Auth::user()->hasAnyRole('administrator', 'moderator');
+        return Auth::user()->hasAnyRole('administrator', 'moderator');
     }
 
     /**

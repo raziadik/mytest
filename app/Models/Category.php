@@ -5,9 +5,12 @@ namespace App\Models;
 use App\Traits\BasicHasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\ContactProfile;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;
@@ -167,22 +170,22 @@ class Category extends Authenticatable
      * Find user by username
      *
      * @param string $username
-     * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Query\Builder|object|User
+     * @return Builder|Model|object
      */
-    public static function findByUsername($username) {
+    public static function findByUsername(string $username) {
         return User::select()->where(['username' => $username])->first();
     }
 
-    public function profile()
+    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Profile::class);
     }
 
     /**
-     * The profile attributes that belong to the category.
+     * @return BelongsToMany
      */
-    public function filterableAttributes(): BelongsToMany
+    public function categoryProfile(): BelongsToMany
     {
-        return $this->belongsToMany( 'category_profile');
+        return $this->belongsToMany( ContactProfile::class);
     }
 }

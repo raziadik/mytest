@@ -75,7 +75,7 @@
                     <h6>{{ $user->profile->description }}</h6>
                 </div>
                 <div id="app">
-                <contact-buttons :movable="false" :contacts="{{ $user->profile->contacts->toJson() }}"></contact-buttons>
+                    <contact-buttons :movable="false" :contacts="{{ $user->profile->contacts->toJson() }}"></contact-buttons>
                 </div>
             </div>
         </div>

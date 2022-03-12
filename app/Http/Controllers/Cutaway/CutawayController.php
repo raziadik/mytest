@@ -7,20 +7,25 @@ use App\Models\Contact;
 use App\Models\Profile;
 use App\Models\ContactProfile;
 use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Traits\HasRoles;
 
 class CutawayController extends BaseController
 {
+    use HasRoles;
+
     /**
      * Display user profile
      *
-     * @param  Request  $request
-     * @param  string  $link
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
+    public function __construct()
+    {
+
+    }
 
     public function show(Request $request, $link)
     {
@@ -29,10 +34,10 @@ class CutawayController extends BaseController
             $canEdit = Gate::allows('all_manage', $user->profile);
             return view('cutaway.show', compact('user', 'canEdit'));
         }
-
+dd($link);
         $user = User::findByHash($link);
 
-        if ($user) {
+        if ($user->username) {
             return redirect('/' . $user->username);
         }
         if (Auth::check()) {
@@ -46,19 +51,21 @@ class CutawayController extends BaseController
 
     public function edit($profileId)
     {
-        $profile = Profile::findOrFail($profileId);
-        $contacts = Contact::all();
-        if (!Gate::allows('all_manage', $profile)) {
+        $user = Auth::user();
+        if (! $user->hasAnyRole('administrator', 'manager', 'user')) {
             abort(403);
         }
+        $profile = Profile::findOrFail($profileId);
+        $contacts = Contact::all();
+
         return view('cutaway.edit', compact('profile', 'contacts'));
     }
 
     public function profile($profileId)
     {
         $profile = Profile::findOrFail($profileId);
-
-        if (!Gate::allows('all_manage', $profile)) {
+        $user = Auth::user();
+        if (! $user->hasAnyRole('administrator', 'manager', 'user')) {
             abort(403);
         }
         return view('cutaway.profile', compact('profile'));
@@ -67,7 +74,8 @@ class CutawayController extends BaseController
     public function save(UserProfileCreateRequest $request, $profileId)
     {
         $profile = Profile::findOrFail($profileId);
-        if (!Gate::allows('all_manage', $profile)) {
+        $user = Auth::user();
+        if (! $user->hasAnyRole('administrator', 'manager', 'user')) {
             abort(403);
         }
         $data = $request->all();
@@ -90,7 +98,8 @@ class CutawayController extends BaseController
     public function uploadAvatar(Request $request, $profileId)
     {
         $profile = Profile::findOrFail($profileId);
-        if (!Gate::allows('all_manage', $profile)) {
+        $user = Auth::user();
+        if (! $user->hasAnyRole('administrator', 'manager', 'user')) {
             abort(403);
         }
 		$data=[];
@@ -131,7 +140,8 @@ class CutawayController extends BaseController
     public function addContact(Request $request, $profileId, $contactId)
     {
         $profile = Profile::find($profileId);
-        if (!Gate::allows('all_manage', $profile)) {
+        $user = Auth::user();
+        if (! $user->hasAnyRole('administrator', 'manager', 'user')) {
             abort(403);
         }
 
@@ -166,7 +176,8 @@ class CutawayController extends BaseController
     public function editContact(Request $request, $profileId, $contactId)
     {
         $profile = Profile::find($profileId);
-        if (!Gate::allows('all_manage', $profile)) {
+        $user = Auth::user();
+        if (! $user->hasAnyRole('administrator', 'manager', 'user')) {
             abort(403);
         }
 //        $contact = \DB::table('contact_profile')->where(['profile_id' => $profileId, 'slug' => $contactId])->first();

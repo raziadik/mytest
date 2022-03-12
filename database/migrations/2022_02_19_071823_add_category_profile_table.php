@@ -14,10 +14,11 @@ class AddCategoryProfileTable extends Migration
     public function up()
     {
         Schema::create('category_profile', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('contact_profile_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
-            $table->foreign('contact_profile_id')->references('id')->on('contact_profile')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('contact_profile_id')->references('id')->on('contact_profile');
         });
 
     }

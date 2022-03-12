@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ContactProfile extends Model
 {
@@ -23,8 +24,4 @@ class ContactProfile extends Model
     ];
 
 
-    public function filterableAttributes(): BelongsToMany
-    {
-        return $this->belongsToMany( 'category_profile');
-    }
 }
